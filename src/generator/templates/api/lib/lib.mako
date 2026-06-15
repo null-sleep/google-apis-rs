@@ -51,7 +51,7 @@
 <%
     # fr == fattest resource, the fatter, the more important, right ?
     fr = find_fattest_resource(c)
-    hub_url = hub_type(c.schemas, util.canonical_name())
+    hub_url = "api::%s" % hub_type(c.schemas, util.canonical_name())
     call_builder_url = CALL_BUILDER_MARKERT_TRAIT
     delegate_url = DELEGATE_TYPE
     request_trait_url = REQUEST_MARKER_TRAIT
@@ -59,6 +59,28 @@
     part_trait_url = PART_MARKER_TRAIT
 
     doc_base_url = util.doc_base_url() + '/' + to_extern_crate_name(util.crate_name()) + '/'
+    common_doc_base_url = 'https://docs.rs/google-apis-common/latest/google_apis_common/'
+    crate_common_items = {
+        'common::Delegate': 'trait.Delegate.html',
+        'common::Result': 'type.Result.html',
+    }
+    google_apis_common_items = {
+        'common::CallBuilder': 'trait.CallBuilder.html',
+        'common::MethodsBuilder': 'trait.MethodsBuilder.html',
+        'common::Part': 'trait.Part.html',
+        'common::RequestValue': 'trait.RequestValue.html',
+        'common::Resource': 'trait.Resource.html',
+        'common::ResponseResult': 'trait.ResponseResult.html',
+    }
+
+    def rustdoc_readme_url(url):
+        if url.startswith('api::'):
+            return 'api/struct.%s.html' % url.split('::', 1)[1]
+        if url in crate_common_items:
+            return crate_common_items[url]
+        if url in google_apis_common_items:
+            return common_doc_base_url + google_apis_common_items[url]
+        return url
 
     def link(name, url):
         lf = '[%s](%s)'
@@ -67,6 +89,9 @@
         for scheme in ('http', 'https'):
             if url.startswith(scheme + '://'):
                 return lf % (name, url)
+        url = rustdoc_readme_url(url)
+        if url.startswith('http://') or url.startswith('https://'):
+            return lf % (name, url)
         return lf % (name, doc_base_url + url)
 
 
