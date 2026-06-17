@@ -9,7 +9,7 @@
 //! The original source code is [on github](https://github.com/Byron/google-apis-rs/tree/main/gen/sheets4).
 //! # Features
 //!
-//! Handle the following *Resources* with ease from the central [hub](Sheets) ...
+//! Handle the following *Resources* with ease from the central [hub](api::Sheets) ...
 //!
 //! * [spreadsheets](api::Spreadsheet)
 //!  * [*batch update*](api::SpreadsheetBatchUpdateCall), [*create*](api::SpreadsheetCreateCall), [*developer metadata get*](api::SpreadsheetDeveloperMetadataGetCall), [*developer metadata search*](api::SpreadsheetDeveloperMetadataSearchCall), [*get*](api::SpreadsheetGetCall), [*get by data filter*](api::SpreadsheetGetByDataFilterCall), [*sheets copy to*](api::SpreadsheetSheetCopyToCall), [*values append*](api::SpreadsheetValueAppendCall), [*values batch clear*](api::SpreadsheetValueBatchClearCall), [*values batch clear by data filter*](api::SpreadsheetValueBatchClearByDataFilterCall), [*values batch get*](api::SpreadsheetValueBatchGetCall), [*values batch get by data filter*](api::SpreadsheetValueBatchGetByDataFilterCall), [*values batch update*](api::SpreadsheetValueBatchUpdateCall), [*values batch update by data filter*](api::SpreadsheetValueBatchUpdateByDataFilterCall), [*values clear*](api::SpreadsheetValueClearCall), [*values get*](api::SpreadsheetValueGetCall) and [*values update*](api::SpreadsheetValueUpdateCall)
@@ -23,7 +23,7 @@
 //!
 //! The API is structured into the following primary items:
 //!
-//! * **[Hub](Sheets)**
+//! * **[Hub](api::Sheets)**
 //!     * a central object to maintain state and allow accessing all *Activities*
 //!     * creates [*Method Builders*](common::MethodsBuilder) which in turn
 //!       allow access to individual [*Call Builders*](common::CallBuilder)
