@@ -332,6 +332,8 @@ api:
     - v1
     groupssettings:
     - v1
+    health:
+    - v4
     healthcare:
     - v1
     - v1beta1
